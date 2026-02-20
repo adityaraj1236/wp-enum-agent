@@ -1,0 +1,26 @@
+{
+  "name": "wp-enum-agent",
+  "version": "1.0.0",
+  "description": "An AI-assisted WordPress security assessment tool designed for controlled testing environments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityaraj1236/wp-enum-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adityaraj1236/wp-enum-agent/issues"
+  },
+  "homepage": "https://github.com/adityaraj1236/wp-enum-agent#readme",
+  "dependencies": {
+    "axios": "^1.13.5",
+    "dotenv": "^17.3.1",
+    "mastra": "^1.3.2"
+  }
+}
