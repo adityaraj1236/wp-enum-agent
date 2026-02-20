@@ -4,7 +4,7 @@ dotenv.config();
 async function main() {
     
     try {
-        const targetUrl = process.env.TARGET_URL;
+        const targetUrl = process.argv[2] || process.env.TARGET_URL;
 
         if(!targetUrl) {    
             console.error("TARGET_URL is not defined in the environment variables.");
