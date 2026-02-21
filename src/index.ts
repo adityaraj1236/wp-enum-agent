@@ -20,7 +20,7 @@ async function main() {
                 content:`Perform a complete WordPress security assessment on: ${targetUrl}
                 STRICT EXECUTION RULES:
                 1. You MUST call restEnumTool first.
-                2. You MUST always call authorEnumTool even if REST succeeds.
+                2. 2. You MUST always call authorEnumTool as well — discovers users not visible via REST API.
                 3. You MUST merge all discovered usernames.
                 4. You MUST call loginAttemptTool for EVERY discovered username.
                 5. Do NOT stop after first successful technique.
