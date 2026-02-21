@@ -8,18 +8,23 @@ async function main() {
         const targetUrl = process.argv[2] || process.env.TARGET_URL;
 
         if(!targetUrl) {    
-            console.error("TARGET_URL is not defined in the environment variables.");
+            console.error("targret url is not defined in the environment variables.");
             return;
         }   
         console.log(`Starting enumeration for: ${targetUrl}`);
 
         //Agent logic goes here
-        console.log("Agent logic would be implemented here. Initial setup completed");
+        console.log("gent logic would be implemented here. Initial setup completed");
         const result =  await wpAgent.generate([
             {
                 role: "user",
-                content: `Perform WordPress user enumeration on the following target URL: ${targetUrl}. 
-                          Use the available tools to enumerate users via the REST API endpoint and report your findings.`
+                content:`Perform a complete WordPress security assessment on: ${targetUrl}
+
+You MUST execute ALL of the following steps in order:
+1. Call restEnumTool to enumerate users via REST API
+2. If no users found, call authorEnumTool as fallback
+3. For EVERY discovered username, call loginattemptTool to test weak passwords
+4. Report all findings including any discovered credentials`
             }
         ])
         console.log(result.text)

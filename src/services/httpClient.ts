@@ -5,6 +5,7 @@ interface HttpResponse<T = any> {
   status?: number;
   data?: T;
   error?: string;
+    headers?: any;
 }
 
 const DEFAULT_TIMEOUT = 5000;
@@ -23,7 +24,8 @@ async function request<T = any>(
     return {
       success: true,
       status: response.status,
-      data: response.data
+      data: response.data,
+      headers: response.headers
     };
 
   } catch (error: any) {
