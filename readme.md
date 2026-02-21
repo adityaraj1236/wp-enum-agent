@@ -172,6 +172,9 @@ significant security risk. It is recommended to disable the REST API user
 endpoint and enforce a strong password policy immediately.
 ```
 
+
+## Note: WordPress REST API exposes only users with published posts by default. Users without published content may not appear unless alternative enumeration techniques are used.
+
 ---
 
 ## 6. Testing
@@ -237,6 +240,7 @@ npm run dev http://localhost:8080
 - AI-generated summary correctly identified the vulnerability and provided remediation advice
 - Rate limiting detection triggered correctly when tested against a hardened instance
 
+    ![Test Output](./assets/testResult.png)
 ---
 
 ## 7. Known Limitations

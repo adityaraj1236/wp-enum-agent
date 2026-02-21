@@ -50,7 +50,7 @@ export const loginAttemptTool = createTool({
 
             const isLoggedIn = cookieString.includes("wordpress_logged_in");
         const isRedirect = response.status === 302 && 
-  response.headers?.location?.includes("/wp-admin");
+        response.headers?.location?.includes("/wp-admin");
       if (isLoggedIn || isRedirect) {
         return {
           success: true,
