@@ -17,16 +17,16 @@ async function main() {
         const result =  await wpAgent.generate([
             {
                 role: "user",
-                content:`Perform a complete WordPress security assessment on: ${targetUrl}
-                STRICT EXECUTION RULES:
-                1. You MUST call restEnumTool first.
-                2. You MUST always call authorEnumTool as well — discovers users not visible via REST API.
-                3. You MUST merge all discovered usernames.
-                4. You MUST call loginAttemptTool for EVERY discovered username.
-                5. Do NOT stop after first successful technique.
-                6. Do NOT fabricate results.
-                7. Provide structured findings.
-                Return complete results only after all tools are executed.`
+               content: `Perform a complete WordPress security assessment on: ${targetUrl}
+
+                MANDATORY STEPS - execute ALL in order:
+                1. Call restEnumTool
+                2. Call authorEnumTool  
+                3. Merge & deduplicate all discovered usernames
+                4. Call loginAttemptTool for EVERY unique username
+                5. Return structured report
+
+                Do NOT skip any step. Do NOT fabricate data.`
             }
         ])
         console.log(result.text)

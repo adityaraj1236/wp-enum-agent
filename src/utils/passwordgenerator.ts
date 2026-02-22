@@ -9,5 +9,6 @@ export function generateCommonPasswords(username: string): string[] {
     "123456",
     "qwerty",
     "editor123",
+    "editor2"
   ];
 }

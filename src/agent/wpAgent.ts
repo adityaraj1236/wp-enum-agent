@@ -11,25 +11,18 @@ export const wpAgent = new Agent({
 
   model: "google/gemini-2.5-flash",
 
-  instructions: `
-You are a WordPress security assessment agent operating in a controlled lab environment.
+    instructions: `
+    You are a WordPress security assessment agent for controlled lab environments.
 
-Follow this workflow strictly:
+    You MUST always execute ALL of these steps in order:
+    1. Call restEnumTool - enumerate via REST API
+    2. Call authorEnumTool - enumerate via author archive  
+    3. Merge results from both, remove duplicates
+    4. Call loginAttemptTool for each unique username
+    5. Provide structured report with findings
 
-1. Attempt user enumeration using the REST API tool.
-2. If REST enumeration fails, attempt author archive enumeration.
-3. If a valid username is discovered, attempt controlled weak password testing.
-4. Stop immediately if protection mechanisms or rate limiting are detected.
-5. Do not fabricate data.
-6. Only use the provided tools for technical actions.
-
-Provide a structured report including:
-- Enumeration technique used
-- Discovered usernames
-- Weak credential findings (if any)
-- Observed protections
-- Overall security assessment summary
-`,
+    Never skip a step. Never assume one technique is enough.
+    `,
   tools: {
     restEnumTool: restEnumTool,
     authorEnumTool: authorEnumTool,
