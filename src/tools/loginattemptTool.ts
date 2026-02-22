@@ -59,12 +59,16 @@ export const loginAttemptTool = createTool({
           password
         };
       }
-
-      if (
-        response.data &&
-        typeof response.data === "string" &&
-        response.data.toLowerCase().includes("too many")
-      ) {
+      const body = (response.data || "").toString().toLowerCase();
+      const israteLimited = 
+        response.status === 429 ||
+        response.status === 403 ||
+        body.includes("too many login attempts") ||
+        body.includes("try again later") ||
+        body.includes("rate limit") ||
+        body.includes("account locked") ||
+        body.includes("exceeded");
+      if (israteLimited) {
         return {
           success: false,
           protectionDetected: true,
@@ -75,7 +79,7 @@ export const loginAttemptTool = createTool({
 
     return {
       success: false,
-      message: "No weak password found"
+      message: "No valid credentials"
     };
 
   } catch (error: any) {
