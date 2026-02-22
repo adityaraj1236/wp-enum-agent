@@ -18,10 +18,7 @@ export const loginAttemptTool = createTool({
 
  execute: async ({ url, username }) => {
   try {
-    const cleanUrl = url.replace(/\/$/, "");
-    const loginUrl = `${cleanUrl}/wp-login.php`;
-
-    const passwords = generateCommonPasswords(username);
+    const cleanUrl = url.replace(/\/$/, "") , loginUrl = `${cleanUrl}/wp-login.php`, passwords = generateCommonPasswords(username);
 
     for (const password of passwords) {
       const response = await httpClient.post(
