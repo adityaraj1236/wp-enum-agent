@@ -10,6 +10,7 @@ export const wpAgent = new Agent({
     "AI-driven WordPress security assessment agent for controlled lab environments.",
 
   model: 'google/gemini-2.5-flash',
+  
 
    instructions: `
 You are an expert WordPress security assessment agent operating in a controlled lab environment.
